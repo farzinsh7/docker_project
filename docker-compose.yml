@@ -1,0 +1,7 @@
+version: '3'
+services:
+  website:
+    image: website:latest
+    container_name: website2
+    ports:
+      - 8001:80
