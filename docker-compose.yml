@@ -1,7 +1,9 @@
 version: '3'
+
 services:
-  website:
-    image: website:latest
-    container_name: website2
+  app:
+    build: ./app
+    container_name: app
+    restart: always
     ports:
-      - 8001:80
+      - 5000:5000
