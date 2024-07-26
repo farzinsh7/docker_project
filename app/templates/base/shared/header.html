@@ -1,0 +1,29 @@
+<div class="fixed-top navbar-dark" data-navbar-on-scroll="data-navbar-on-scroll">
+    <div class="container mt-2 center" id="top-logo">
+      <a class="navbar-brand fw-normal ls-2" href="{% url "page:home" %}"><img src="{{ info.logo.url }}" alt=""></a>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-theme py-0">
+      <div class="container">
+        <a class="navbar-brand fw-normal ls-2 hidden-opacity hidden-display" id="top-logo2" href="{% url "page:home" %}"><img src="{{ info.logo.url }}" alt=""></a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto" id="navbar-one-page">
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" href="{% url "houses:list_view" %}" data-bs-toggle="dropdown-on-hover" aria-haspopup="true" aria-expanded="false"><span class="nav-link-text">Houses</span></a>
+              <div class="dropdown-menu dropdown-menu-end py-0 overflow-hidden" aria-labelledby="navbarDropdownMenuLink1">
+                {% for house in houses %}
+                <a class="dropdown-item" href="{% url "houses:detail_view" house.slug %}">{{ house.title }}</a>
+                {% endfor %}
+                <a class="dropdown-item" href="{% url "houses:list_view" %}">View All</a>
+              </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{% url "brands:list_view" %}"><span class="nav-link-text">Brands</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url "news:list_view" %}"><span class="nav-link-text">News</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url "about:page" %}"><span class="nav-link-text">About</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url "contact:page" %}"><span class="nav-link-text">Contact</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>

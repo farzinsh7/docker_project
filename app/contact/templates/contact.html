@@ -1,0 +1,102 @@
+{% extends 'base/main_base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block seo_tags %}
+    <meta name="description" content="Contact EHGH"/>
+    <meta property="og:locale" content="en"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ contact.title }}"/>
+    <meta property="og:description" content="Contact EHGH"/>
+    <meta property="og:url" content="{% url 'contact:page' %}"/>
+    <meta name="keywords" content="Contact EHGH">
+{% endblock seo_tags %}
+{% block title %}{{ contact.title }}{% endblock title %}
+{% block content %}
+<!-- ============================================-->
+<!-- <section> begin ============================-->
+<section class="text-center overflow-hidden py-0" data-zanim-timeline="{}" data-zanim-trigger="scroll">
+    <div class="bg-holder overlay  parallax" style="background-image:url({{ contact.banner.url }});">
+    </div>
+    <!--/.bg-holder-->
+    <div class="container-fluid">
+        <div class="header-overlay"></div>
+        <div class="position-relative pt-10 pb-8">
+        <div class="header-text">
+            <div class="overflow-hidden">
+            <h1 class="display-3 fs-7 text-white fw-lighter ls-2" data-zanim-xs='{"duration":2,"delay":0}'>{{ contact.title }}</h1>
+            </div>
+            <div class="overflow-hidden">
+            <div class="d-flex justify-content-center" data-zanim-xs='{"duration":2,"delay":0.1}'>
+                <nav aria-label="breadcrumb">
+                <ol class="breadcrumb text-uppercase ls-2">
+                    <li class="breadcrumb-item"><a class="text-400 hover-color-white" href="{% url "page:home" %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ contact.title }}</li>
+                </ol>
+                </nav>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+
+<!-- <section> begin ============================-->
+<section id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-lg-6 mb-5 mb-lg-0 d-flex flex-column justify-content-between">
+            <div class="row">
+            <div class="col-12">
+                <h5 class="mb-3">Connect With Us</h5>
+            </div>
+            <div class="col-auto mb-2 mb-sm-0" style="width: 190px">
+                <div class="row">
+                <div class="col-1"><span class="fas fa-location-arrow text-700"></span></div>
+                <div class="col px-2">
+                    <p class="mb-1 text-700"><strong>EHGH Company</strong></p>
+                    <p class="mb-0 text-600">{{ contact.address }}</p>
+                </div>
+                </div>
+            </div>
+            <div class="col-auto" style="width: 205px">
+                <div class="row mb-2 mb-sm-1">
+                <div class="col-1"><span class="fas fa-phone me-2 text-700"> </span></div>
+                <div class="col px-2"><a class="text-600" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></div>
+                </div>
+                <div class="row">
+                <div class="col-1"><span class="fas fa-envelope me-2 text-700"></span></div>
+                <div class="col px-2"><a class="text-600" href="mailto:{{ contact.email }}">{{ contact.email }}</a></div>
+                </div>
+            </div>
+            </div>
+            <div class="mt-4 w-100" >
+                {{ contact.iframe|safe }}
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h5 class="mb-3">Feel free to drop us a line!</h5>
+            <form class="zform text-left" action="#" method="post">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                {{ form.name }}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.email }}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.message }}
+            </div>
+            <div class="zform-feedback d-grid">
+                <button class="btn btn-dark hvr-sweep-top" type="submit">Give us a shot</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- end of .container-->
+</section>
+<!-- <section> close ============================-->
+<!-- ============================================-->
+{% endblock content %}
